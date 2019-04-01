@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#outer{
+			width:965px;
+			height: 136px;
+			border: 1px solid #000;
+			overflow: hidden;
+		}
+		#inner{
+			width:3000px;
+			height: 136px;
+			overflow: hidden;
+		}
+		#inner img{
+			width:193px;
+			height: 136px;
+			float: left;
+		}
+	</style>
+</head>
+<body>
+	<button>走走～</button>
+	<button>婷婷～</button>
+	<div id="outer">
+		<div id="inner">
+			<img src="images/01.jpg" alt="">
+			<img src="images/02.jpg" alt="">
+			<img src="images/03.jpg" alt="">
+			<img src="images/04.jpg" alt="">
+			<img src="images/05.jpg" alt="">
+			<img src="images/01.jpg" alt="">
+			<img src="images/02.jpg" alt="">
+			<img src="images/03.jpg" alt="">
+			<img src="images/04.jpg" alt="">
+			<img src="images/05.jpg" alt="">
+		</div>
+	</div>
+	<script>
+	var out=document.getElementById('outer');
+	var inn=document.getElementById('inner');
+	var imgs=document.getElementById('inner').getElementsByTagName('img');
+	var btn=document.getElementsByTagName('button');
+
+	var timer=null;
+	function time(){
+		clearInterval(timer);
+		timer=setInterval(function(){
+			out.scrollLeft++;
+			if(out.scrollLeft>=imgs[0].offsetWidth*5){
+				out.scrollLeft=0;
+			}
+		},10)
+	}
+	btn[0].onclick=function(){
+		time();
+	}
+	btn[1].onclick=function(){
+		clearInterval(timer);
+	}
+	out.onmouseover=function(){
+		clearInterval(timer);
+	}
+	out.onmouseout=function(){
+			time();
+	}
+	</script>
+</body>
+</html>
